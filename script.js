@@ -435,6 +435,9 @@ let activePhase = 0;
 const tabsCont = document.getElementById('phaseTabs');
 const weeksCont = document.getElementById('weeksContainer');
 
+const makeEl = (tag, cls) => { const e = document.createElement(tag); if (cls) e.className = cls; return e; };
+const setTxt = (el, txt) => { el.textContent = txt; return el; };
+
 const renderRoadmap = () => {
   tabsCont.innerHTML = '';
   WEEKLY_ROADMAP.forEach((phase, i) => {
@@ -447,27 +450,55 @@ const renderRoadmap = () => {
 
   weeksCont.innerHTML = '';
   WEEKLY_ROADMAP[activePhase].weeks.forEach(week => {
-    const div = document.createElement('div');
-    div.className = 'week-card reveal';
-    div.innerHTML = `
-      <div class="week-header" onclick="toggleWeek(this)">
-        <div class="week-num">W${week.weekNum}</div>
-        <div class="week-info">
-          <div class="week-title">${week.title}</div>
-          <div class="week-dates">${week.dates}</div>
-        </div>
-        <span class="week-priority priority-${week.priority}">${week.priority}</span>
-        <span class="week-arrow">▼</span>
-      </div>
-      <div class="week-body">
-        <ul class="week-tasks">${week.tasks.map((t,i)=>`<li><span>${i+1}.</span>${t}</li>`).join('')}</ul>
-        <div class="week-meta">
-          <div class="week-res"><strong>📚 Resources</strong>${week.resource}</div>
-          <div class="week-check"><strong>✅ Checkpoint</strong>${week.checkpoint}</div>
-        </div>
-        ${week.videoInsight ? `<div class="week-insight"><strong>🎬 Video: </strong>${week.videoInsight}</div>` : ''}
-      </div>`;
-    weeksCont.appendChild(div);
+    const card = makeEl('div', 'week-card reveal');
+
+    // Header
+    const header = makeEl('div', 'week-header');
+    const numBadge = makeEl('div', 'week-num'); numBadge.textContent = 'W' + week.weekNum;
+    const info = makeEl('div', 'week-info');
+    const titleDiv = makeEl('div', 'week-title'); titleDiv.textContent = week.title;
+    const datesDiv = makeEl('div', 'week-dates'); datesDiv.textContent = week.dates;
+    info.appendChild(titleDiv); info.appendChild(datesDiv);
+    const pri = makeEl('span', 'week-priority priority-' + week.priority); pri.textContent = week.priority;
+    const arrow = makeEl('span', 'week-arrow'); arrow.textContent = '▼';
+    header.appendChild(numBadge); header.appendChild(info); header.appendChild(pri); header.appendChild(arrow);
+    header.onclick = () => { body.classList.toggle('open'); arrow.classList.toggle('open'); };
+    card.appendChild(header);
+
+    // Body
+    const body = makeEl('div', 'week-body');
+
+    // Tasks
+    const ul = makeEl('ul', 'week-tasks');
+    (week.tasks || []).forEach((t, i) => {
+      const li = document.createElement('li');
+      const sp = document.createElement('span'); sp.textContent = (i + 1) + '.';
+      li.appendChild(sp);
+      li.appendChild(document.createTextNode(t));
+      ul.appendChild(li);
+    });
+    body.appendChild(ul);
+
+    // Meta
+    const meta = makeEl('div', 'week-meta');
+    const res = makeEl('div', 'week-res');
+    const resB = document.createElement('strong'); resB.textContent = '📚 Resources';
+    res.appendChild(resB); res.appendChild(document.createTextNode(week.resource || ''));
+    const chk = makeEl('div', 'week-check');
+    const chkB = document.createElement('strong'); chkB.textContent = '✅ Checkpoint';
+    chk.appendChild(chkB); chk.appendChild(document.createTextNode(week.checkpoint || ''));
+    meta.appendChild(res); meta.appendChild(chk);
+    body.appendChild(meta);
+
+    // Insight
+    if (week.videoInsight) {
+      const ins = makeEl('div', 'week-insight');
+      const insB = document.createElement('strong'); insB.textContent = '🎬 Video: ';
+      ins.appendChild(insB); ins.appendChild(document.createTextNode(week.videoInsight));
+      body.appendChild(ins);
+    }
+    card.appendChild(body);
+    weeksCont.appendChild(card);
   });
   observeReveal();
 };
@@ -485,26 +516,40 @@ window.toggleWeek = header => {
 ═══════════════════════════════════════════════ */
 const pyrWrap = document.getElementById('pyramidWrap');
 PYRAMID.forEach(p => {
-  const div = document.createElement('div');
-  div.className = 'pyr-item reveal';
-  div.style.borderLeft = `4px solid ${p.color}`;
-  div.innerHTML = `
-    <div class="pyr-header" onclick="togglePyr(this)">
-      <div class="pyr-num" style="background:${p.color}">${p.level}</div>
-      <div class="pyr-info">
-        <div class="pyr-title">${p.title}</div>
-        <div class="pyr-tag">${p.tag}</div>
-      </div>
-      <span class="week-arrow">▼</span>
-    </div>
-    <div class="pyr-body">
-      <p class="pyr-desc">${p.desc}</p>
-      <div class="pyr-actions">${p.actions.map((a,i)=>`<div class="pyr-action"><span style="color:${p.color}">${i+1}.</span>${a}</div>`).join('')}</div>
-      <div class="pyr-warn"><strong>⚠️ Warning: </strong>${p.warning}</div>
-    </div>`;
+  const div = makeEl('div', 'pyr-item reveal');
+  div.style.borderLeft = '4px solid ' + p.color;
+
+  const hdr = makeEl('div', 'pyr-header');
+  const num = makeEl('div', 'pyr-num'); num.textContent = String(p.level); num.style.background = p.color;
+  const info = makeEl('div', 'pyr-info');
+  const ti = makeEl('div', 'pyr-title'); ti.textContent = p.title;
+  const tg = makeEl('div', 'pyr-tag'); tg.textContent = p.tag;
+  info.appendChild(ti); info.appendChild(tg);
+  const ar = makeEl('span', 'week-arrow'); ar.textContent = '▼';
+  hdr.appendChild(num); hdr.appendChild(info); hdr.appendChild(ar);
+
+  const body = makeEl('div', 'pyr-body');
+  const desc = makeEl('p', 'pyr-desc'); desc.textContent = p.desc;
+  body.appendChild(desc);
+
+  const acts = makeEl('div', 'pyr-actions');
+  p.actions.forEach((a, i) => {
+    const row = makeEl('div', 'pyr-action');
+    const sp = document.createElement('span'); sp.textContent = (i+1) + '.'; sp.style.color = p.color;
+    row.appendChild(sp); row.appendChild(document.createTextNode(a));
+    acts.appendChild(row);
+  });
+  body.appendChild(acts);
+
+  const warn = makeEl('div', 'pyr-warn');
+  const wb = document.createElement('strong'); wb.textContent = 'Warning: ';
+  warn.appendChild(wb); warn.appendChild(document.createTextNode(p.warning));
+  body.appendChild(warn);
+
+  hdr.onclick = () => { body.classList.toggle('open'); ar.classList.toggle('open'); };
+  div.appendChild(hdr); div.appendChild(body);
   pyrWrap.appendChild(div);
 });
-window.togglePyr = h => { h.nextElementSibling.classList.toggle('open'); h.querySelector('.week-arrow').classList.toggle('open'); };
 
 /* ═══════════════════════════════════════════════
    PROJECTS
