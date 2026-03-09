@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDE Journey Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="dark">
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">SDE<span class="logo-dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#checklist">Checklist</a></li>
+      <li><a href="#certifications">Certs</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+    <button class="hamburger" id="hamburger">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#dashboard">Dashboard</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#projects">Projects</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#skills">Skills</a>
+    <a href="#dsa">DSA Tools</a>
+    <a href="#linkedin">LinkedIn</a>
+    <a href="#resume">Resume</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>LeetCode 400+ ✦</span><span>AWS Certified ✦</span><span>Internship 2027 ✦</span><span>System Design ✦</span><span>Build-to-Code ✦</span><span>Inbound Networking ✦</span><span>Python ✦</span><span>Open Source ✦</span>
+      <span>LeetCode 400+ ✦</span><span>AWS Certified ✦</span><span>Internship 2027 ✦</span><span>System Design ✦</span><span>Build-to-Code ✦</span><span>Inbound Networking ✦</span><span>Python ✦</span><span>Open Source ✦</span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">B.Tech CSE (AIML) · Year 1 · Started Mar 9, 2026</p>
+    <h1 class="hero-title">SDE Journey<br><em>Tracker</em></h1>
+    <p class="hero-sub">Your complete roadmap from Day 1 to MAANG internship.<br>Every task. Every project. Every week.</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num" id="dayCounter">1</div><div class="hstat-label">Day of Journey</div></div>
+      <div class="hstat-sep"></div>
+      <div class="hstat"><div class="hstat-num">17</div><div class="hstat-label">Weeks in Plan</div></div>
+      <div class="hstat-sep"></div>
+      <div class="hstat"><div class="hstat-num">9</div><div class="hstat-label">Projects</div></div>
+      <div class="hstat-sep"></div>
+      <div class="hstat"><div class="hstat-num">8</div><div class="hstat-label">Certifications</div></div>
+    </div>
+    <a href="#dashboard" class="btn-hero">Start Tracking ↓</a>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="section">
+  <div class="container">
+    <div class="sec-label">Overview</div>
+    <h2 class="sec-title">Your <em>Dashboard</em></h2>
+    <p class="sec-sub">Click ✏️ on any card to update your numbers.</p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-info">
+          <div class="stat-name">LeetCode Problems</div>
+          <div class="stat-val" id="val-leetcode">0</div>
+          <div class="stat-bar"><div class="stat-fill blue" id="fill-leetcode"></div></div>
+          <div class="stat-target">Target: 400</div>
+        </div>
+        <button class="edit-btn" onclick="openModal('leetcode','LeetCode Problems',400)">✏️</button>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-info">
+          <div class="stat-name">Codeforces Rating</div>
+          <div class="stat-val" id="val-cf">0</div>
+          <div class="stat-bar"><div class="stat-fill orange" id="fill-cf"></div></div>
+          <div class="stat-target">Target: 1400 (Specialist)</div>
+        </div>
+        <button class="edit-btn" onclick="openModal('cf','Codeforces Rating',1400)">✏️</button>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🐙</div>
+        <div class="stat-info">
+          <div class="stat-name">GitHub Commits</div>
+          <div class="stat-val" id="val-github">0</div>
+          <div class="stat-bar"><div class="stat-fill green" id="fill-github"></div></div>
+          <div class="stat-target">Target: 365 this year</div>
+        </div>
+        <button class="edit-btn" onclick="openModal('github','GitHub Commits',365)">✏️</button>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-info">
+          <div class="stat-name">CGPA</div>
+          <div class="stat-val" id="val-cgpa">0.0</div>
+          <div class="stat-bar"><div class="stat-fill sky" id="fill-cgpa"></div></div>
+          <div class="stat-target">Target: 8.5+ / 10</div>
+        </div>
+        <button class="edit-btn" onclick="openModal('cgpa','CGPA',10,true)">✏️</button>
+      </div>
+    </div>
+
+    <div class="current-week" id="currentWeek">
+      <div class="cw-badge">📍 This Week</div>
+      <h3 id="cwTitle">Week 1 · ZERO DAY</h3>
+      <p id="cwDates" class="cw-dates"></p>
+      <ul id="cwTasks" class="cw-tasks"></ul>
+      <a href="#roadmap" class="cw-link">See full roadmap →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" class="section alt">
+  <div class="container">
+    <div class="sec-label">The Plan</div>
+    <h2 class="sec-title">Week-by-Week <em>Roadmap</em></h2>
+    <p class="sec-sub">5 phases. Every week has exact tasks, resources, and checkpoints.</p>
+    <div class="phase-tabs" id="phaseTabs"></div>
+    <div id="weeksContainer"></div>
+  </div>
+</section>
+
+<!-- 5-LEVEL BLUEPRINT -->
+<section id="pyramid" class="section">
+  <div class="container">
+    <div class="sec-label">From the Video</div>
+    <h2 class="sec-title">The 5-Level <em>Blueprint</em></h2>
+    <p class="sec-sub">A $191K MAANG engineer's exact system. Go in order. You cannot skip.</p>
+    <div class="pyramid-wrap" id="pyramidWrap"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section alt">
+  <div class="container">
+    <div class="sec-label">Build Portfolio</div>
+    <h2 class="sec-title">Projects <em>Tracker</em></h2>
+    <p class="sec-sub">Impact beats tech stack. Always explain the WHY.</p>
+    <div class="proj-summary" id="projSummary"></div>
+    <div id="projectsList"></div>
+  </div>
+</section>
+
+<!-- DAILY CHECKLIST -->
+<section id="checklist" class="section">
+  <div class="container">
+    <div class="sec-label">Every Single Day</div>
+    <h2 class="sec-title">Daily <em>Checklist</em></h2>
+    <p class="sec-sub">10 tasks. 10/10 is the standard. Come back every morning.</p>
+
+    <div class="checklist-top">
+      <div class="score-ring">
+        <svg viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="50" class="ring-bg"/>
+          <circle cx="60" cy="60" r="50" class="ring-prog" id="ringProg"/>
+        </svg>
+        <div class="ring-inner">
+          <span id="scoreNum">0</span><span class="ring-denom">/10</span>
+        </div>
+      </div>
+      <div class="checklist-meta">
+        <div class="cl-date" id="clDate"></div>
+        <div class="cl-streak">🔥 <span id="streakNum">0</span> day streak</div>
+        <div class="cl-label" id="clLabel">Start your day!</div>
+      </div>
+    </div>
+
+    <div id="tasksList" class="tasks-list"></div>
+
+    <div class="note-area">
+      <label>📝 What did you build / learn today?</label>
+      <textarea id="dailyNote" placeholder="e.g. Solved 2 LeetCode Array problems. Built login flow for Expense Tracker. Learned JWT auth..." rows="3"></textarea>
+      <button onclick="saveNote()" class="btn-save">Save Note</button>
+    </div>
+
+    <div class="history-wrap">
+      <button class="history-btn" onclick="toggleHistory()">📅 Past 14 Days <span id="histArrow">▼</span></button>
+      <div id="histGrid" style="display:none" class="hist-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section alt">
+  <div class="container">
+    <div class="sec-label">Your Credentials</div>
+    <h2 class="sec-title">Certifications <em>Tracker</em></h2>
+    <p class="sec-sub">Earn in priority order. Each cert targets a specific company.</p>
+    <div class="cert-bar-wrap">
+      <div class="cert-bar-label"><span>Earned</span><span id="certCount">0 / 8</span></div>
+      <div class="cert-bar-track"><div class="cert-bar-fill" id="certBarFill"></div></div>
+    </div>
+    <div id="certsList"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="sec-label">Technical Arsenal</div>
+    <h2 class="sec-title">Skills <em>&amp; Tools</em></h2>
+    <p class="sec-sub">Green = interview ready · Orange = learning · Red = just started.</p>
+    <div id="skillsWrap"></div>
+  </div>
+</section>
+
+<!-- LINKEDIN LEARNING -->
+<section id="linkedin-learning" class="section alt">
+  <div class="container">
+    <div class="sec-label">Free via College</div>
+    <h2 class="sec-title">LinkedIn <em>Learning</em></h2>
+    <p class="sec-sub">14 courses. All free through your college access. Complete in order.</p>
+    <div class="ll-prog-wrap">
+      <span id="llCount">0 / 14</span> completed
+      <div class="ll-track"><div class="ll-fill" id="llFill"></div></div>
+    </div>
+    <div id="llList"></div>
+  </div>
+</section>
+
+<!-- DSA TOOLS -->
+<section id="dsa" class="section">
+  <div class="container">
+    <div class="sec-label">Visual Learning</div>
+    <h2 class="sec-title">DSA Visual <em>Tools</em></h2>
+    <p class="sec-sub">See algorithms animate before you code them.</p>
+    <div class="dsa-grid" id="dsaGrid"></div>
+    <div class="dsa-sequence">
+      <h3>Exact sequence for any DSA topic</h3>
+      <div class="seq-list">
+        <div class="seq-item"><span class="seq-n">1</span><div><strong>Read theory</strong> — what problem does this structure solve? (GFG intro)</div></div>
+        <div class="seq-item"><span class="seq-n">2</span><div><strong>csvvistool.com</strong> — watch it animate with pseudocode. Set slow speed.</div></div>
+        <div class="seq-item"><span class="seq-n">3</span><div><strong>visualgo.net</strong> — same structure, actual code, variable tracking live.</div></div>
+        <div class="seq-item"><span class="seq-n">4</span><div><strong>Implement from scratch</strong> in Python. No notes. Just try.</div></div>
+        <div class="seq-item"><span class="seq-n">5</span><div><strong>LeetCode company list</strong> — solve 5–7 problems on this topic only.</div></div>
+        <div class="seq-item"><span class="seq-n">6</span><div><strong>Stuck?</strong> GFG → read fully → close the window → code from memory. Never copy-paste.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINKEDIN PROFILE -->
+<section id="linkedin" class="section alt">
+  <div class="container">
+    <div class="sec-label">Inbound Networking</div>
+    <h2 class="sec-title">LinkedIn <em>Profile Guide</em></h2>
+    <p class="sec-sub">Recruiters should find YOU. Post consistently. Build inbound.</p>
+    <div class="li-cards">
+      <div class="li-card">
+        <div class="li-head">🔤 Headline — copy this exactly</div>
+        <div class="li-body" id="liHead">B.Tech CSE (AIML) @ [College] | Python · DSA · AWS | Aspiring SDE @ MAANG | Building real-world systems</div>
+        <button class="btn-copy" onclick="copyEl('liHead',this)">📋 Copy</button>
+      </div>
+      <div class="li-card">
+        <div class="li-head">👤 About Section</div>
+        <div class="li-body pre" id="liAbout">I'm a Computer Science (AIML) student at [College], obsessed with building systems that scale.
+
+Currently building:
+→ Distributed backend systems (URL shortener handling 10K req/sec)
+→ ML pipelines on AWS (fraud detection, 91% accuracy)
+→ Secure apps (AES-256 encrypted password manager)
+→ NLP chatbots with Google Speech API voice integration
+
+Goal: SDE Internship @ Amazon/Google/Microsoft 2027 → Full-time 2028
+
+Tech Stack: Python · FastAPI · MySQL · Redis · Docker · AWS · scikit-learn · NLTK · React
+
+Open to: Internship opportunities and mentorship from MAANG engineers</div>
+        <button class="btn-copy" onclick="copyEl('liAbout',this)">📋 Copy</button>
+      </div>
+    </div>
+    <h3 class="li-sub">📅 Post every week — consistency beats quality</h3>
+    <div id="postGrid" class="post-grid"></div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="section">
+  <div class="container">
+    <div class="sec-label">Get The Interview</div>
+    <h2 class="sec-title">Resume <em>Guide</em></h2>
+    <p class="sec-sub">The format that got a college student hired at Amazon. One page. Always.</p>
+    <div class="resume-wrap">
+      <div class="resume-rules" id="resumeRules"></div>
+      <div class="resume-paper">
+        <div class="rp-name">YOUR FULL NAME</div>
+        <div class="rp-contact">youremail@gmail.com &nbsp;·&nbsp; +91-XXXXXXXXXX &nbsp;·&nbsp; LinkedIn &nbsp;·&nbsp; GitHub</div>
+        <div class="rp-sec"><div class="rp-sec-head">EDUCATION</div>
+          <p>B.Tech CSE (AIML) · YOUR COLLEGE NAME · Expected May 2028 · CGPA: 8.X/10</p></div>
+        <div class="rp-sec"><div class="rp-sec-head">TECHNICAL SKILLS</div>
+          <p>Python, Java, SQL &nbsp;·&nbsp; Flask, FastAPI, React &nbsp;·&nbsp; MySQL, Redis, MongoDB &nbsp;·&nbsp; Docker, AWS, Git &nbsp;·&nbsp; TensorFlow, scikit-learn, NLTK</p></div>
+        <div class="rp-sec"><div class="rp-sec-head">PROJECTS</div>
+          <p class="rp-proj"><strong>Fraud Detection System</strong> | Python, Kafka, XGBoost, AWS SageMaker <span class="rp-link">[GitHub]</span></p>
+          <p class="rp-bullet">• Engineered real-time pipeline processing 1,000+ transactions/sec — XGBoost at 91% accuracy</p>
+          <p class="rp-proj mt8"><strong>Distributed URL Shortener</strong> | Python, Redis, MySQL, Docker, AWS EC2 <span class="rp-link">[GitHub]</span></p>
+          <p class="rp-bullet">• Built URL shortener handling 10,000+ concurrent requests with sub-50ms response via Redis caching</p>
+          <p class="rp-proj mt8"><strong>Password Manager</strong> | Python, cryptography library, Pygame, SQLite <span class="rp-link">[GitHub]</span></p>
+          <p class="rp-bullet">• AES-256 encryption, zero plaintext storage, Pygame GUI — secure-by-design architecture</p>
+        </div>
+        <div class="rp-sec"><div class="rp-sec-head">ACHIEVEMENTS</div>
+          <p>LeetCode 400+ · Codeforces Specialist (1400+) · AWS Cloud Practitioner · AWS SAA · HackerRank Python 5★</p></div>
+      </div>
+      <a href="https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs" target="_blank" class="btn-overleaf">→ Open Jake's Template on Overleaf (Free)</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">SDE<span>.</span></div>
+      <div class="footer-links">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#projects">Projects</a>
+        <a href="#checklist">Checklist</a>
+        <a href="https://leetcode.com" target="_blank">LeetCode ↗</a>
+        <a href="https://github.com" target="_blank">GitHub ↗</a>
+      </div>
+      <p class="footer-copy">Built with intent. Deployed with purpose. ✦</p>
+    </div>
+  </div>
+</footer>
+
+<!-- EDIT MODAL -->
+<div class="modal-bg" id="modalBg" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-title" id="modalTitle">Update</div>
+    <input type="number" class="modal-input" id="modalInput" step="any" />
+    <div class="modal-actions">
+      <button onclick="saveModal()" class="btn-modal-save">Save</button>
+      <button onclick="closeModal()" class="btn-modal-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
