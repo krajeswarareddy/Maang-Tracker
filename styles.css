@@ -854,7 +854,6 @@ footer {
    ANIMATIONS
 ═══════════════════════════════════════════════ */
 .reveal {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
+  opacity: 1; transform: translateY(0);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
