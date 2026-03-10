@@ -1,6 +1,6 @@
 # SDE Journey Tracker
 
-> A complete, self-hosted web app to track every step of the journey from 1st-year student to MAANG SDE intern.
+> A self-hosted, single-page web application to track every milestone on the path from first-year student to MAANG software engineering intern.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
@@ -10,173 +10,145 @@
 
 ---
 
-## What Is This?
+## Overview
 
-This is a personal SDE career tracker built as a pure **HTML + CSS + JavaScript** single-directory website — no npm, no build tools, no frameworks. Drop it on Vercel and you're live in 60 seconds.
+**SDE Journey Tracker** is a lightweight, zero-dependency career progression tool built with pure HTML, CSS, and JavaScript. There is no npm, no build pipeline, and no framework — just three files that deploy in under a minute.
 
-It tracks everything a student needs to get a software engineering internship at a MAANG-tier company by Year 3 of B.Tech:
-
-- ✅ Daily checklist with streak counter and history
-- 📊 Live stats dashboard (LeetCode, Codeforces, GitHub commits, CGPA)
-- 🗺️ Week-by-week roadmap across 5 phases and 17 week-groups
-- 🔺 5-Level Blueprint from a $191K MAANG engineer's system
-- 🚀 9 project cards with status tracker and resume bullets
-- 🏅 8 certification cards with tick-off and progress bar
-- 💡 DSA visual tools guide (csvvistool, visualgo, GFG method)
-- 🎓 14 LinkedIn Learning courses with completion tracking
-- 📄 Resume guide with live paper preview
-- 💼 LinkedIn profile copy-paste templates
-- 🌙 Dark / light mode
-
-All data persists locally in the browser via `localStorage`. Nothing is sent to any server.
-
----
-
-## Screenshots
-
-> Dashboard · Roadmap · Daily Checklist · Projects · Certifications
-
-*(Add screenshots here after deployment)*
-
----
-
-## Files
-
-```
-sde-tracker/
-├── index.html      ← Full page structure and all sections
-├── styles.css      ← Dark/light theme, all component styles
-└── script.js       ← All data + all interactivity
-```
-
-That's it. Three files.
-
----
-
-## Deploy to Vercel (60 seconds)
-
-**Step 1 — Push to GitHub**
-
-```bash
-# Create a new repo on github.com called "sde-tracker"
-# Then upload index.html, styles.css, script.js
-# OR use the GitHub web interface to drag-and-drop the 3 files
-```
-
-**Step 2 — Deploy on Vercel**
-
-1. Go to [vercel.com](https://vercel.com)
-2. Click **New Project** → Import your GitHub repo
-3. Framework Preset: **Other** (leave everything default)
-4. Click **Deploy**
-
-**Step 3 — Live**
-
-Your site is live at `your-project.vercel.app`. Every push to GitHub auto-deploys.
-
----
-
-## Run Locally
-
-No installation needed. Just open the file:
-
-```bash
-# Option 1 — Open directly in browser
-open index.html
-
-# Option 2 — Serve locally with Python (avoids CORS on some browsers)
-python3 -m http.server 3000
-# Then visit http://localhost:3000
-```
-
----
-
-## Customising Your Data
-
-All content lives in `script.js` at the top, clearly labelled:
-
-| Constant | What to Edit |
-|---|---|
-| `WEEKLY_ROADMAP` | All 17 week-groups across 5 phases |
-| `PYRAMID` | The 5-Level Blueprint cards |
-| `PROJECTS` | All 9 project cards, tech stacks, bullets |
-| `DAILY_TASKS` | The 10 daily checklist items |
-| `CERTIFICATIONS` | 8 certifications with cost and why |
-| `SKILLS_DATA` | Skill names and current levels |
-| `LINKEDIN_LEARNING` | 14 courses with instructor and duration |
-| `DSA_TOOLS` | 5 DSA visualization tools |
-| `POSTING_SCHEDULE` | LinkedIn posting calendar |
-| `RESUME_RULES` | Resume formatting rules |
-| `START_DATE` | Change `'2026-03-09'` to your actual start date |
+The application is structured around a structured, multi-year roadmap for achieving a software engineering internship at a MAANG-tier company by the third year of a B.Tech programme. All user data is persisted locally via `localStorage`; nothing is transmitted to any external server.
 
 ---
 
 ## Features
 
-### Dashboard
-Four editable stat cards — click the ✏️ button, enter your current number, save. Progress bars update instantly. Numbers persist in `localStorage`.
-
-### Roadmap
-Phase tabs (Year 1 Sem 2 → Year 3 Sem 6). Click any week card to expand full tasks, resources, checkpoint, and a video insight from a MAANG engineer.
-
-### Daily Checklist
-10 tasks. Click to tick. Score ring animates. Saves automatically for today. Streak counter calculates consecutive days where you completed ≥ 50% of tasks. Daily note field lets you log what you built.
-
-### History
-Past 14 days shown as horizontal bar chart with score and your daily note.
-
-### Projects
-Status tracker for each project: Not Started → In Progress → Deployed → On Resume. Summary counts update live.
-
-### Certifications & LinkedIn Learning
-Tick-off any item. Progress bars update. State persists between sessions.
-
-### Dark / Light Mode
-Toggle in the navbar. Preference saved to `localStorage`.
+| Module | Description |
+|---|---|
+| **Dashboard** | Four editable stat cards (LeetCode, Codeforces, GitHub commits, CGPA) with live progress bars |
+| **Roadmap** | 5-phase, 17-week-group curriculum from Year 1 Semester 2 through Year 3 Semester 6 |
+| **Daily Checklist** | 10 tasks with animated score ring, streak counter, and daily notes |
+| **History** | 14-day bar chart with per-day score and note review |
+| **5-Level Blueprint** | Structured career framework adapted from a $191K MAANG engineer's system |
+| **Projects** | 9 portfolio project cards with status tracking (Not Started → In Progress → Deployed → On Resume) |
+| **Certifications** | 8 certification cards with tick-off progress and cost visibility |
+| **LinkedIn Learning** | 14 course cards with instructor, duration, and completion tracking |
+| **DSA Tools Guide** | Curated visual tool reference (csvvistool, VisuAlgo, GFG method, and more) |
+| **Resume Guide** | Formatting rules with a live paper preview |
+| **LinkedIn Templates** | Ready-to-use copy-paste profile and post templates |
+| **Dark / Light Mode** | System-aware toggle with preference saved to `localStorage` |
 
 ---
 
-## Roadmap Contents (Summary)
+## Project Structure
 
-| Phase | Period | Goal |
+```
+sde-tracker/
+├── index.html      ← Page structure and all section markup
+├── styles.css      ← Dark/light theme variables and all component styles
+└── script.js       ← Application data constants and all interactivity
+```
+
+---
+
+## Roadmap
+
+| Phase | Period | Key Targets |
 |---|---|---|
-| Year 1 Sem 2 | Mar – May 2026 | Python, CS50P, 3 projects, 60 LeetCode |
+| Year 1 Sem 2 | Mar – May 2026 | Python, CS50P, 3 projects, 60 LeetCode problems |
 | Year 2 Sem 3 | Jun – Nov 2026 | Graphs, OS/DBMS, 150 LeetCode, REST API, AWS CLF |
 | Year 2 Sem 4 | Dec 2026 – May 2027 | System Design, URL Shortener, 300 LeetCode, ML project |
 | Year 3 Sem 5 | Jun – Nov 2027 | 400 LeetCode, Chat App, AWS SAA, MAANG applications |
-| Year 3 Sem 6 | Dec 2027 – May 2028 | Final interviews, internship, PPO conversion |
+| Year 3 Sem 6 | Dec 2027 – May 2028 | Final interviews, internship secured, PPO conversion |
 
 ---
 
-## Tech Stack Used in Projects
+## Tech Stack Covered
 
-The tracker covers 9 portfolio projects using:
+The tracker spans 9 portfolio projects across the following technologies:
 
-`Python` · `Flask` · `FastAPI` · `Redis` · `MySQL` · `SQLite` · `Docker` · `AWS EC2` · `AWS SageMaker` · `Kafka` · `XGBoost` · `NLTK` · `Google Speech API` · `WebSockets` · `MongoDB` · `React` · `scikit-learn` · `Streamlit` · `Pygame` · `BeautifulSoup`
+`Python` · `Flask` · `FastAPI` · `Redis` · `MySQL` · `SQLite` · `Docker` · `AWS EC2` · `AWS SageMaker` · `Apache Kafka` · `XGBoost` · `NLTK` · `Google Speech API` · `WebSockets` · `MongoDB` · `React` · `scikit-learn` · `Streamlit` · `Pygame` · `BeautifulSoup`
+
+---
+
+## Deployment
+
+### Deploy to Vercel (< 60 seconds)
+
+**1. Push files to GitHub**
+
+```bash
+# Create a new repository named "sde-tracker" on github.com
+# Upload index.html, styles.css, and script.js
+# (Drag-and-drop via the GitHub web interface works fine)
+```
+
+**2. Import to Vercel**
+
+1. Navigate to [vercel.com](https://vercel.com) and click **New Project**
+2. Import your GitHub repository
+3. Set Framework Preset to **Other** — leave all other settings as default
+4. Click **Deploy**
+
+**3. Go live**
+
+Your application is immediately available at `your-project.vercel.app`. Every subsequent push to `main` triggers an automatic redeployment.
+
+---
+
+### Run Locally
+
+No installation required.
+
+```bash
+# Option 1 — Open directly in the browser
+open index.html
+
+# Option 2 — Serve via Python (recommended to avoid CORS issues)
+python3 -m http.server 3000
+# Visit http://localhost:3000
+```
+
+---
+
+## Configuration
+
+All content is defined as named constants at the top of `script.js` and is straightforward to customise:
+
+| Constant | Purpose |
+|---|---|
+| `START_DATE` | Set to your actual start date (default: `'2026-03-09'`) |
+| `WEEKLY_ROADMAP` | All 17 week-groups across 5 phases |
+| `PYRAMID` | The 5-Level Blueprint cards |
+| `PROJECTS` | Project cards, tech stacks, and resume bullet points |
+| `DAILY_TASKS` | The 10 daily checklist items |
+| `CERTIFICATIONS` | Certification cards with cost and rationale |
+| `SKILLS_DATA` | Skill names and current proficiency levels |
+| `LINKEDIN_LEARNING` | Courses with instructor and duration metadata |
+| `DSA_TOOLS` | DSA visualisation tool references |
+| `POSTING_SCHEDULE` | LinkedIn content calendar |
+| `RESUME_RULES` | Resume formatting and content rules |
 
 ---
 
 ## Contributing
 
-This is a personal tracker, but if you want to fork it for your own journey:
+This repository is a personal career tracker, but it is designed to be forked and adapted for any student's journey.
 
-1. Fork the repo
-2. Update `START_DATE` in `script.js` to your actual start date
-3. Customise the roadmap weeks, projects, and certifications to your own targets
+1. Fork the repository
+2. Update `START_DATE` in `script.js` to your start date
+3. Customise `WEEKLY_ROADMAP`, `PROJECTS`, and `CERTIFICATIONS` to reflect your own targets
 4. Deploy to Vercel
+
+Pull requests that improve the core tooling (bug fixes, accessibility, performance) are welcome.
 
 ---
 
 ## License
 
-MIT — use it, fork it, build on it.
+This project is licensed under the **MIT License** — free to use, fork, and build upon.
 
 ---
 
 <div align="center">
 
-Built by [Rajeswara Reddy K](https://github.com/krajeswarareddy) · Started March 9, 2026 · Target: MAANG Internship 2027
-
-*"I don't just learn tech. I use it to build things that set my family free."*
+Built by [Rajeswara Reddy K](https://github.com/krajeswarareddy) &nbsp;·&nbsp; Started March 2026 &nbsp;·&nbsp; Target: MAANG Internship 2027
 
 </div>
