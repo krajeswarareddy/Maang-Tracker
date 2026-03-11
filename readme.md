@@ -1,4 +1,4 @@
-# SDE Journey Tracker
+# SDE Journey Track for Individual
 
 > A self-hosted, single-page web application to track every milestone on the path from first-year student to MAANG software engineering intern.
 
@@ -152,3 +152,4 @@ This project is licensed under the **MIT License** — free to use, fork, and bu
 Built by [Rajeswara Reddy K](https://github.com/krajeswarareddy) &nbsp;·&nbsp; Started March 2026 &nbsp;·&nbsp; Target: MAANG Internship 2027
 
 </div>
+
