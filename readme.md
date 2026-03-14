@@ -1,5 +1,9 @@
 # SDE Journey Track for Individual
 
+remove this and just for commit and git green graph and also fill the lines gap after removing content
+** I am not using this MAANG tracker Because i am using new one but this also has potential to crack but newer one is better than this**
+
+
 > A self-hosted, single-page web application to track every milestone on the path from first-year student to MAANG software engineering intern.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
