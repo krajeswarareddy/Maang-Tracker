@@ -10,8 +10,6 @@
 
 ---
 
-**remove this on 25th april 2026**
-
 ## Overview
 
 **SDE Journey Tracker** is a lightweight, zero-dependency career progression tool built with pure HTML, CSS, and JavaScript. There is no npm, no build pipeline, and no framework — just three files that deploy in under a minute.
